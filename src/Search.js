@@ -4,7 +4,7 @@ class Search extends Component {
     constructor() {
         super();
         this.state = {
-            filmName: "dragon ball super broly",
+            filmName: "one piece",
         }
     }
     titleChanger = (event) => {

@@ -13,7 +13,7 @@ class Film extends Component {
 
         axios.get("http://www.omdbapi.com/?s=" + this.props.userInput + "&apikey=89c84d51")
             .then(response => {
-                console.log(response.data.Search);
+                console.log(response);
                 if (response.data.Search !== undefined) {
                     this.setState({
                         films: response.data.Search
@@ -36,9 +36,9 @@ class Film extends Component {
                 <br />
                 {(this.state.films.map(film =>
                     <div>
-                        <b> Title :</b> : {film.Title}
-                        <br /><b> Year :</b> {film.Year}
-                        <br /><b> Type :</b>{film.Type}
+                        <b/> Title :  {film.Title}
+                        <br/> Year :   {film.Year}
+                        <br/> Type :   {film.Type}
                         <br /> <img src={film.Poster} />
                     </div>)
                 )}
