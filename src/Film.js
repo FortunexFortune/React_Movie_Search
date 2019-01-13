@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import FilmHistory from './FilmHistory';
+
 class Film extends Component {
 
     constructor() {
         super();
         this.state = {
-            films: []
+            films: [],
+            noFilm: [{ Title: " !! Not Found !!", Year: "!! Year not Found !! ", Type: "!! Type Not Found !!" }],
         }
     }
 
@@ -13,35 +16,45 @@ class Film extends Component {
 
         axios.get("http://www.omdbapi.com/?s=" + this.props.userInput + "&apikey=89c84d51")
             .then(response => {
-                console.log(response);
-                if (response.data.Search !== undefined) {
+                console.log(" Response satus :", response.data.Response);
+                if (response.data.Response === "True") {
                     this.setState({
                         films: response.data.Search
                     });
+                    this.setState({
+                        newTitle : response.data.Response
+                    });
+                    // console.log(this.state.films);
                 }
                 else {
                     this.setState({
-                        films: []
+                        films: this.state.noFilm
                     });
+                    this.setState({
+                        newTitle : response.data.Response
+                    });
+                    // console.log("Film Not Found : ", this.state.films);
                 }
-            }).catch(function (error) {
-                console.log(error);
-            });
+            })
     }
 
     render() {
         return (
             <div>
-                <button onClick={this.componentDidMount} type="button">Click Me!</button>
-                <br />
-                {(this.state.films.map(film =>
-                    <div>
-                        <b/> Title :  {film.Title}
-                        <br/> Year :   {film.Year}
-                        <br/> Type :   {film.Type}
-                        <br /> <img src={film.Poster} />
-                    </div>)
-                )}
+                <div >
+                    {/* <FilmHistory history={this.props.userInput} response={this.state.newTitle}/> */}
+                    <button onClick={this.componentDidMount} type="button">Click Me!</button>
+                    <br />
+                    <br />
+                    {(this.state.films.map(film =>
+                        <div className="dot" >
+                            <b /> Title :  {film.Title}
+                            <br /> Year :   {film.Year}
+                            <br /> Type :   {film.Type}
+                            <br /> <img src={film.Poster} />
+                        </div>)
+                    )}
+                </div>
             </div>
         )
     }
