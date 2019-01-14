@@ -14,9 +14,7 @@ class Search extends Component {
     render() {
         return (
             <div >
-                <input type="text" name="search" placeholder="Film Name" onChange={this.titleChanger}></input><br />
-                {/* <p> {this.state.filmName} </p> */}
-                <Film userInput={this.state.filmName} />
+                <Film userInput={this.state.filmName} titleChanger = {this.titleChanger} />
             </div>
         );
     }

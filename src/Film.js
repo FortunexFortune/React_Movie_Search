@@ -19,12 +19,10 @@ class Film extends Component {
                 console.log(" Response satus :", response.data.Response);
                 if (response.data.Response === "True") {
                     this.setState({
-                        films: response.data.Search
-                    });
-                    console.log(this.state.films);
-                    this.setState({
+                        films: response.data.Search,
                         previousFilm: this.props.userInput
                     });
+                    console.log(this.state.films);
                 }
                 else {
                     this.setState({
@@ -38,7 +36,9 @@ class Film extends Component {
         return (
             <div>
                 <div >
-                    <FilmHistory previousFilm={this.state.previousFilm} componentDidMount={this.componentDidMount} />
+                    <FilmHistory previousFilm={this.state.previousFilm}
+                                                componentDidMount={this.componentDidMount}
+                                                                titleChanger={this.props.titleChanger} />
                     {(this.state.films.map((film) =>
                         <div className="dot" key={film.imdbID}>
                             <b /> Title :   {film.Title}

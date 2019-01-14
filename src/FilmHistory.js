@@ -8,25 +8,30 @@ class FilmHistory extends Component {
         }
     }
 
-    historyUpdate() {
-            let arr = this.state.history.slice();
-            arr.push("  " + this.props.previousFilm.toUpperCase() + " - ");
-            this.setState({
-                history: arr
-            });
+    historyUpdate = () => {
+        let arr = this.state.history.slice();
+        arr.push("  " + this.props.previousFilm.toUpperCase() + " - ");
+        this.setState({
+            history: arr
+        });
         { console.log(this.state.history) }
     }
 
-    clickHandle = () => {
-        this.historyUpdate();
+    handleSubmit = (e) => {
+        e.preventDefault();
         this.props.componentDidMount();
+        this.historyUpdate();
     }
 
     render() {
         return (
             <div >
                 <br></br>
-                <button onClick={this.clickHandle} className="button" ><span>Click Me</span></button>
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" placeholder="Film Name" onChange={this.props.titleChanger}></input>
+                    <br></br> <br></br>
+                    <button className="button" ><span>Click Me</span></button>
+                </form>
                 <p>
                     Search History :
                      {this.state.history[this.state.history.length - 4]}
