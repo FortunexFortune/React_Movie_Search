@@ -4,7 +4,7 @@ class Search extends Component {
     constructor() {
         super();
         this.state = {
-            filmName: "One piece",
+            filmName: "one piece",
         }
     }
     titleChanger = (event) => {
@@ -16,7 +16,6 @@ class Search extends Component {
             <div >
                 <input type="text" name="search" placeholder="Film Name" onChange={this.titleChanger}></input><br />
                 {/* <p> {this.state.filmName} </p> */}
-                <br />
                 <Film userInput={this.state.filmName} />
             </div>
         );

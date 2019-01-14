@@ -27,12 +27,6 @@
   flex: 1;
 }
 
-.dot {
-  border-style: dotted;
-  border-width: 2px;
-  width: 350px;
-  margin: auto;
-}
 
 .App-link {
   color: #61dafb;
@@ -40,9 +34,82 @@
   width: 3500px;
 }
 
-.history{
-  background-color: green;
+
+
+
+
+
+.dot {
+  border-style: dotted;
+  border-width: 2px;
+  width: 350px;
+  margin: auto;
 }
+
+.button {
+  background-color: #e7e7e7; color: black;
+  border: none;
+  color: black;
+  padding: 18px 70px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+input[type=text] {
+  width: 250px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  /* background-image: url('radar.png'); */
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+
+
+
+
+
+
 
 @keyframes App-logo-spin {
   from {
